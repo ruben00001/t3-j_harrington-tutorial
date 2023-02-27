@@ -3,9 +3,23 @@
 
 import Head from "next/head";
 import Script from "next/script";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-// import { CldUploadWidget } from "next-cloudiary";
+import { CldUploadWidget } from "next-cloudiary";
+
+const generateSignature = async (callback, paramsToSign) =>
+  await fetch("/api/sign-cloudinary-params", {
+    method: "post",
+    body: JSON.stringify({
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      paramsToSign,
+    }),
+  })
+    .then((r) => r.json())
+    .then(({ signature }) => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+      callback(signature);
+    });
 
 const Images = () => {
   const [scriptStatus, setScriptStatus] = useState<
@@ -14,7 +28,6 @@ const Images = () => {
   const [cloudinaryWidget, setCloudinaryWidget] = useState(null);
 
   useEffect(() => {
-    console.log("scriptStatus:", scriptStatus);
     if (scriptStatus === "ready") {
       if (!cloudinary) {
         return;
@@ -24,8 +37,10 @@ const Images = () => {
       const cloudinaryWidget = cloudinary.createUploadWidget(
         {
           cloudName: "dmez60vl2",
-          uploadPreset: "unsigned-test",
+          uploadPreset: "signed-test",
           sources: ["local"],
+          uploadSignature: generateSignature,
+          api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
         },
         (error, result) => {
           console.log("error:", error);
@@ -57,18 +72,20 @@ const Images = () => {
         height={400}
       />
       <CldImage src="zwhs68vfa7cjrvdqueec" alt="" width={600} height={400} /> */}
-        {/* <CldUploadWidget
-        uploadPreset="unsigned-test"
-      >
-        {({ open }) => {
-          function handleOnClick(e: React.MouseEvent<HTMLElement>) {
-            e.preventDefault();
-            open();
-          }
+        <CldUploadWidget
+          uploadPreset="signed-test"
+          signatureEndpoint="/api/sign-cloudinary-params"
+        >
+          {({ open }) => {
+            function handleOnClick(e: React.MouseEvent<HTMLElement>) {
+              e.preventDefault();
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+              open();
+            }
 
-          return <button onClick={handleOnClick}>Upload an Image</button>;
-        }}
-      </CldUploadWidget> */}
+            return <button onClick={handleOnClick}>Upload an Image</button>;
+          }}
+        </CldUploadWidget>
       </main>
     </>
   );

@@ -20,7 +20,7 @@
     "cloudinary": "^1.34.0",
     "next": "13.1.6",
     "next-auth": "^4.19.0",
-    "next-cloudinary": "^3.0.0",
+    "next-cloudinary": "^3.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "superjson": "1.9.1",

@@ -1,5 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
+// `pnpm prisma db push` to update schema
 
 generator client {
     provider = "prisma-client-js"
@@ -84,4 +85,10 @@ model Note {
     content   String   @db.Text
     topic     Topic    @relation(fields: [topicId], references: [id])
     topicId   String
+}
+
+model Image {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    cloudinaryId String
 }

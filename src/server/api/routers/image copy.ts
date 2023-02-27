@@ -7,9 +7,6 @@ export const imageRouter = createTRPCRouter({
     return "";
   }),
 
-  uploadAndCreate: protectedProcedure
-    .input(z.object({ file: z.instanceof(File) }))
-    .mutation(({ ctx, input: { file } }) => {}),
   create: protectedProcedure
     .input(z.object({ cloudinaryId: z.string() }))
     .mutation(({ ctx, input: { cloudinaryId } }) => {
@@ -18,5 +15,11 @@ export const imageRouter = createTRPCRouter({
           cloudinaryId,
         },
       });
+      /*       return ctx.prisma.topic.create({
+        data: {
+          title: "hello",
+          userId: ctx.session.user.id,
+        },
+      }); */
     }),
 });

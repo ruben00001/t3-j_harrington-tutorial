@@ -23,7 +23,7 @@ specifiers:
   eslint-config-next: 13.1.6
   next: 13.1.6
   next-auth: ^4.19.0
-  next-cloudinary: ^3.0.0
+  next-cloudinary: ^3.2.0
   postcss: ^8.4.14
   prettier: ^2.8.1
   prettier-plugin-prisma: ^4.10.0
@@ -47,7 +47,7 @@ dependencies:
   cloudinary: 1.34.0
   next: 13.1.6_biqbaboplfbrettd7655fr4n2y
   next-auth: 4.19.2_3vryta7zmbcsw4rrqf4axjqggm
-  next-cloudinary: 3.0.0_next@13.1.6+react@18.2.0
+  next-cloudinary: 3.2.0_next@13.1.6+react@18.2.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   superjson: 1.9.1
@@ -82,15 +82,15 @@ packages:
     dependencies:
       regenerator-runtime: 0.13.11
 
-  /@cloudinary-util/url-loader/1.4.0:
-    resolution: {integrity: sha512-iB2W/j9/Ftp/PF7+38WYPRNPZY4bRdIYFMbLoDvsI5VLHYQwPoktDWkyzftoVH3akBvbh113Pil7JJFGt78E3g==}
+  /@cloudinary-util/url-loader/2.0.0:
+    resolution: {integrity: sha512-yDFwNM6c6puIsXwhhwfFcOqIf1v6ML+vVFTAqczpW9qSWGE73s/z2aJJdGLYJvFbpL8VlFmpf3WL3xGYRArt6A==}
     dependencies:
-      '@cloudinary-util/util': 1.2.2
+      '@cloudinary-util/util': 2.0.0
       '@cloudinary/url-gen': 1.9.1
     dev: false
 
-  /@cloudinary-util/util/1.2.2:
-    resolution: {integrity: sha512-xtXLfjsLoAKTsFUKDS0P/RPfgfnWs6iSkSBYZoG9uxAgK0MutWUZECX6wfN9FDa/3Yr+Z8oTRxxQuFBasyAqDg==}
+  /@cloudinary-util/util/2.0.0:
+    resolution: {integrity: sha512-7WHFR7uIizW+MRLk+RhLVFQ6jzPKYrBZGICqy6s38hakj+zpXd4nISmMfKbZgwFTBp53oHRi8dW9G2kzXmVe3w==}
     dev: false
 
   /@cloudinary/transformation-builder-sdk/1.2.6:
@@ -2331,14 +2331,14 @@ packages:
       uuid: 8.3.2
     dev: false
 
-  /next-cloudinary/3.0.0_next@13.1.6+react@18.2.0:
-    resolution: {integrity: sha512-+TIoj8IBYz/UxZh2Q5zddS2JSo5l9p8tJNcocMU22QAFCIUBo72TdNl6n1KMlVOMfuXrwK8Hcbxfwwhi9DktIw==}
+  /next-cloudinary/3.2.0_next@13.1.6+react@18.2.0:
+    resolution: {integrity: sha512-QAQDjMXaowVs5k4iSkCMNHw+s3tUjUSt7GWsjVEnCHd98jzaW6Ft0q905sFIxb8bQbek/q12O26s/l5sp4N4Yg==}
     peerDependencies:
       next: ^12 || ^13
       react: ^17 || ^18
     dependencies:
-      '@cloudinary-util/url-loader': 1.4.0
-      '@cloudinary-util/util': 1.2.2
+      '@cloudinary-util/url-loader': 2.0.0
+      '@cloudinary-util/util': 2.0.0
       '@cloudinary/url-gen': 1.9.1
       next: 13.1.6_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0

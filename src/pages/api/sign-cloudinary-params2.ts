@@ -1,25 +1,21 @@
 /* eslint-disable @typescript-eslint/require-await */
 import type { NextApiRequest, NextApiResponse } from "next";
-import { v2 as cloudinary, type SignApiOptions } from "cloudinary";
+import { v2 as cloudinary } from "cloudinary";
 
 export default async function handler(
-  req: NextApiRequest,
+  _req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const body = (JSON.parse(req.body as string) || {}) as {
-    paramsToSign?: SignApiOptions;
-  };
-  const { paramsToSign } = body;
-
   try {
-    if (!paramsToSign) {
-      throw new Error("no paramsToSign");
-    }
+    const timestamp = Math.round(new Date().getTime() / 1000);
+
     const signature = cloudinary.utils.api_sign_request(
-      paramsToSign,
+      { timestamp, upload_preset: "signed-test" },
       process.env.CLOUDINARY_API_SECRET as string
     );
+
     res.status(200).json({
+      timestamp,
       signature,
     });
   } catch (error) {
